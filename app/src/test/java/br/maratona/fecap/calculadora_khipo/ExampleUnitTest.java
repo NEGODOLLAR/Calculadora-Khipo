@@ -1,4 +1,4 @@
-package br.fecap.ccp.calculadora_khipo;
+package br.maratona.fecap.calculadora_khipo;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package br.fecap.ccp.calculadora_khipo;
+package br.maratona.fecap.calculadora_khipo;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("br.fecap.ccp.calculadora_khipo", appContext.getPackageName());
+        assertEquals("br.maratona.fecap.calculadora_khipo", appContext.getPackageName());
     }
 }

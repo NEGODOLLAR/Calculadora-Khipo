@@ -13,10 +13,20 @@
         android:theme="@style/Theme.Calculadora_khipo"
         tools:targetApi="31">
         <activity
+            android:name=".SimuladorResultado"
+            android:exported="false" />
+        <activity
+            android:name=".Simulador"
+            android:exported="false" />
+        <activity
+            android:name=".Logo"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Calculadora_khipo.NoActionBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
