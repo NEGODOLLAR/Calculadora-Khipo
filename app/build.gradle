@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'br.maratona.fecap.calculadora_khipo'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "br.maratona.fecap.calculadora_khipo"
