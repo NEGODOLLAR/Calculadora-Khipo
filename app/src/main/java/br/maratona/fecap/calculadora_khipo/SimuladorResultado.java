@@ -3,12 +3,15 @@ package br.maratona.fecap.calculadora_khipo;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +21,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class SimuladorResultado extends AppCompatActivity {
-    private ConstraintLayout arrowLayout;
-    private ConstraintLayout contentLayout;
-    private ImageView arrowIcon;
-    private int measuredHeight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +32,38 @@ public class SimuladorResultado extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        arrowLayout = findViewById(R.id.arrowLayout);
+        ConstraintLayout arrowOpcoes, arrowCustoAnual, arrowMargem, arrowCusto, arrowTotal;
+        ConstraintLayout contentLayout, contentLayoutCustoAnual, contentLayoutMargem, contentLayoutCusto, contentLayoutTotal;
+        ImageView arrowIcon, arrowIconCustoAnual, arrowIconMargem, arrowIconCusto, arrowIconTotal;
+
+        arrowOpcoes = findViewById(R.id.arrowLayout);
+        arrowCustoAnual = findViewById(R.id.arrowLayoutCustoAnual);
+        arrowMargem = findViewById(R.id.arrowLayoutMargem);
+        arrowCusto = findViewById(R.id.arrowLayoutCusto);
+        arrowTotal = findViewById(R.id.arrowLayoutTotal);
+
+
         contentLayout = findViewById(R.id.contentLayout);
+        contentLayoutCustoAnual = findViewById(R.id.contentLayoutCustoAnual);
+        contentLayoutMargem = findViewById(R.id.contentLayoutMargem);
+        contentLayoutCusto = findViewById(R.id.contentLayoutCusto);
+        contentLayoutTotal = findViewById(R.id.contentLayoutTotal);
+
         arrowIcon = findViewById(R.id.arrowIcon);
-        arrowLayout.setOnClickListener(v -> toggleAccordion());
+        arrowIconCustoAnual = findViewById(R.id.arrowIconCustoAnual);
+        arrowIconMargem = findViewById(R.id.arrowIconMargem);
+        arrowIconCusto = findViewById(R.id.arrowIconCusto);
+        arrowIconTotal = findViewById(R.id.arrowIconTotal);
+
+        arrowOpcoes.setOnClickListener(v -> toggleAccordion(contentLayout, arrowIcon));
+        arrowCustoAnual.setOnClickListener(v -> toggleAccordion(contentLayoutCustoAnual, arrowIconCustoAnual));
+        arrowMargem.setOnClickListener(v -> toggleAccordion(contentLayoutMargem, arrowIconMargem));
+        arrowCusto.setOnClickListener(v -> toggleAccordion(contentLayoutCusto, arrowIconCusto));
+        arrowTotal.setOnClickListener(v -> toggleAccordion(contentLayoutTotal, arrowIconTotal));
 
 
     }
-    private void toggleAccordion() {
+    private void toggleAccordion(ConstraintLayout contentLayout, ImageView arrowIcon) {
         boolean isExpanded = contentLayout.getVisibility() == View.VISIBLE;
 
         // Rotate the arrow icon
@@ -60,56 +84,5 @@ public class SimuladorResultado extends AppCompatActivity {
             contentLayout.setVisibility(View.VISIBLE);
         }
     }
-//
-//    private void expandLayout() {
-//        // Set the layout to VISIBLE before starting the animation
-//        contentLayout.setVisibility(View.VISIBLE);
-//
-//        // Get the initial height (collapsed height)
-//        int initialHeight = 0;
-//
-//        // Use ValueAnimator to animate the height expansion
-//        ValueAnimator animator = ValueAnimator.ofInt(initialHeight, measuredHeight);
-//        animator.setDuration(300); // Set your desired duration
-//        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//            @Override
-//            public void onAnimationUpdate(ValueAnimator animation) {
-//                int value = (int) animation.getAnimatedValue();
-//                // Update layout height dynamically during the animation
-//                ViewGroup.LayoutParams params = contentLayout.getLayoutParams();
-//                params.height = value;
-//                contentLayout.setLayoutParams(params);
-//            }
-//        });
-//        animator.start();
-//    }
-//
-//    private void collapseLayout() {
-//        // Get the initial height (current height)
-//        int initialHeight = contentLayout.getHeight();
-//
-//        // Use ValueAnimator to animate the height collapse to 0
-//        ValueAnimator animator = ValueAnimator.ofInt(initialHeight, 0);
-//        animator.setDuration(300); // Set your desired duration
-//        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//            @Override
-//            public void onAnimationUpdate(ValueAnimator animation) {
-//                int value = (int) animation.getAnimatedValue();
-//                // Update layout height dynamically during the animation
-//                ViewGroup.LayoutParams params = contentLayout.getLayoutParams();
-//                params.height = value;
-//                contentLayout.setLayoutParams(params);
-//            }
-//        });
-//
-//        // Optionally, set the layout to GONE after collapsing animation ends
-//        animator.addListener(new AnimatorListenerAdapter() {
-//            @Override
-//            public void onAnimationEnd(Animator animation) {
-//                contentLayout.setVisibility(View.GONE);
-//            }
-//        });
-//
-//        animator.start();
-//    }
+
 }
