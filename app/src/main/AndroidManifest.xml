@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Calculadora_khipo"
         tools:targetApi="31">
         <activity
+            android:name=".menu_navigation"
+            android:exported="false" />
+        <activity
             android:name=".SimuladorResultado"
             android:exported="false" />
         <activity
@@ -23,16 +26,17 @@
             android:exported="false" />
         <activity
             android:name=".Login"
-            android:exported="false" />
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
