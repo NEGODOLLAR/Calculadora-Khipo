@@ -61,23 +61,31 @@ public class Simulador extends AppCompatActivity {
                 //Calculo Custo Real E MLK
                 auxCReal = (auxSalMensal * 12) / auxQtMes;
                 auxCMlk = (auxCReal * 0.1) + auxSalMensal;
+
+
                 // Calculo Valor Margem Liquida
-                auxVml = auxFatMensal - (auxFatMensal * auxQtHora);
+                auxVml = auxFatMensal - (auxFatMensal * 0.2);
+
+
                 // Calculo Comissão_Prêmio Mensal | Custo Administrativo | Custo Operacional
                 auxComPm = auxVml * 0.01;
+
                 auxCAdm = auxFatMensal * 0.15;
                 auxCOp = auxComPm + auxCAdm + auxCReal;
                 // Calculo e porcentagem MOP e MLK
                 auxMop = auxVml - auxCOp;
                 auxPercMop = auxMop / auxVml;
                 auxMlk = auxVml - (auxComPm + auxCAdm + auxCMlk);
+                auxPercMlk = auxMlk / auxVml;
+
                 // Levar informações para outra tela
                 Intent intent = new Intent(Simulador.this, SimuladorResultado.class);
-                startActivity(intent);
-                intent.putExtra("QtHora", qtHora);
-                intent.putExtra("VlrHora", vHora);
-                intent.putExtra("Salario", vSal);
-                intent.putExtra("MesesConsiderar", qtMes);
+
+                intent.putExtra("QtHora", auxQtHora);
+                intent.putExtra("VlrHora", auxVHora);
+                intent.putExtra("Salario", auxSalMensal);
+                intent.putExtra("MesesConsiderar", auxQtMes);
+
                 intent.putExtra("FaturacaoCli", auxFatMensal);
                 intent.putExtra("CustoReal", auxCReal);
                 intent.putExtra("CustoMLK", auxCMlk);
@@ -89,6 +97,8 @@ public class Simulador extends AppCompatActivity {
                 intent.putExtra("PorcentagemMOP", auxPercMop);
                 intent.putExtra("MLK", auxMlk);
                 intent.putExtra("PorcentagemMLK", auxPercMlk);
+
+                startActivity(intent);
             }
         });
 
