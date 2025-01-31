@@ -3,12 +3,14 @@ package br.maratona.fecap.calculadora_khipo;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,12 +18,21 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.widget.TextViewKt;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 public class SimuladorResultado extends AppCompatActivity {
     private ConstraintLayout arrowLayout;
     private ConstraintLayout contentLayout;
     private ImageView arrowIcon;
     private int measuredHeight;
+
+     TextInputEditText textVlrMensalSr;
+     String vlrMensal;
+    TextView textView4;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +46,15 @@ public class SimuladorResultado extends AppCompatActivity {
         arrowLayout = findViewById(R.id.arrowLayout);
         contentLayout = findViewById(R.id.contentLayout);
         arrowIcon = findViewById(R.id.arrowIcon);
+        textVlrMensalSr = findViewById(R.id.textVlrMensalSr);
+
+        Intent intent = getIntent();
+        vlrMensal = intent.getStringExtra("VlrHora");
+
+
+
         arrowLayout.setOnClickListener(v -> toggleAccordion());
+        textView4.setText(vlrMensal);
 
 
     }
@@ -55,9 +74,11 @@ public class SimuladorResultado extends AppCompatActivity {
         if (isExpanded) {
             // Collapse (animate height to 0)
             contentLayout.setVisibility(View.GONE);
+
         } else {
             // Expand (animate height to full size)
             contentLayout.setVisibility(View.VISIBLE);
+
         }
     }
 //
