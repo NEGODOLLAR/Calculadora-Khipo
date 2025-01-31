@@ -40,7 +40,7 @@ public class SimuladorResultado extends AppCompatActivity {
 
         contentLayout.setVisibility(View.VISIBLE);
         measuredHeight = contentLayout.getHeight();
-        contentLayout.setVisibility(View.GONE);
+//        contentLayout.setVisibility(View.GONE);
     }
     private void toggleAccordion() {
         boolean isExpanded = contentLayout.getVisibility() == View.VISIBLE;
@@ -72,7 +72,7 @@ public class SimuladorResultado extends AppCompatActivity {
         int initialHeight = 0;
 
         // Use ValueAnimator to animate the height expansion
-        ValueAnimator animator = ValueAnimator.ofInt(initialHeight, measuredHeight);
+        ValueAnimator animator = ValueAnimator.ofInt(initialHeight, 600);
         animator.setDuration(300); // Set your desired duration
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
