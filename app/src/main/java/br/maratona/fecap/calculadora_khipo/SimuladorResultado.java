@@ -35,12 +35,9 @@ public class SimuladorResultado extends AppCompatActivity {
         arrowLayout = findViewById(R.id.arrowLayout);
         contentLayout = findViewById(R.id.contentLayout);
         arrowIcon = findViewById(R.id.arrowIcon);
-        measuredHeight = contentLayout.getHeight();
         arrowLayout.setOnClickListener(v -> toggleAccordion());
 
-        contentLayout.setVisibility(View.VISIBLE);
-        measuredHeight = contentLayout.getHeight();
-//        contentLayout.setVisibility(View.GONE);
+
     }
     private void toggleAccordion() {
         boolean isExpanded = contentLayout.getVisibility() == View.VISIBLE;
@@ -57,62 +54,62 @@ public class SimuladorResultado extends AppCompatActivity {
         // Perform the collapsing or expanding animation on contentLayout
         if (isExpanded) {
             // Collapse (animate height to 0)
-            collapseLayout();
+            contentLayout.setVisibility(View.GONE);
         } else {
             // Expand (animate height to full size)
-            expandLayout();
+            contentLayout.setVisibility(View.VISIBLE);
         }
     }
-
-    private void expandLayout() {
-        // Set the layout to VISIBLE before starting the animation
-        contentLayout.setVisibility(View.VISIBLE);
-
-        // Get the initial height (collapsed height)
-        int initialHeight = 0;
-
-        // Use ValueAnimator to animate the height expansion
-        ValueAnimator animator = ValueAnimator.ofInt(initialHeight, 600);
-        animator.setDuration(300); // Set your desired duration
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                int value = (int) animation.getAnimatedValue();
-                // Update layout height dynamically during the animation
-                ViewGroup.LayoutParams params = contentLayout.getLayoutParams();
-                params.height = value;
-                contentLayout.setLayoutParams(params);
-            }
-        });
-        animator.start();
-    }
-
-    private void collapseLayout() {
-        // Get the initial height (current height)
-        int initialHeight = contentLayout.getHeight();
-
-        // Use ValueAnimator to animate the height collapse to 0
-        ValueAnimator animator = ValueAnimator.ofInt(initialHeight, 0);
-        animator.setDuration(300); // Set your desired duration
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                int value = (int) animation.getAnimatedValue();
-                // Update layout height dynamically during the animation
-                ViewGroup.LayoutParams params = contentLayout.getLayoutParams();
-                params.height = value;
-                contentLayout.setLayoutParams(params);
-            }
-        });
-
-        // Optionally, set the layout to GONE after collapsing animation ends
-        animator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                contentLayout.setVisibility(View.GONE);
-            }
-        });
-
-        animator.start();
-    }
+//
+//    private void expandLayout() {
+//        // Set the layout to VISIBLE before starting the animation
+//        contentLayout.setVisibility(View.VISIBLE);
+//
+//        // Get the initial height (collapsed height)
+//        int initialHeight = 0;
+//
+//        // Use ValueAnimator to animate the height expansion
+//        ValueAnimator animator = ValueAnimator.ofInt(initialHeight, measuredHeight);
+//        animator.setDuration(300); // Set your desired duration
+//        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//                int value = (int) animation.getAnimatedValue();
+//                // Update layout height dynamically during the animation
+//                ViewGroup.LayoutParams params = contentLayout.getLayoutParams();
+//                params.height = value;
+//                contentLayout.setLayoutParams(params);
+//            }
+//        });
+//        animator.start();
+//    }
+//
+//    private void collapseLayout() {
+//        // Get the initial height (current height)
+//        int initialHeight = contentLayout.getHeight();
+//
+//        // Use ValueAnimator to animate the height collapse to 0
+//        ValueAnimator animator = ValueAnimator.ofInt(initialHeight, 0);
+//        animator.setDuration(300); // Set your desired duration
+//        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//                int value = (int) animation.getAnimatedValue();
+//                // Update layout height dynamically during the animation
+//                ViewGroup.LayoutParams params = contentLayout.getLayoutParams();
+//                params.height = value;
+//                contentLayout.setLayoutParams(params);
+//            }
+//        });
+//
+//        // Optionally, set the layout to GONE after collapsing animation ends
+//        animator.addListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//                contentLayout.setVisibility(View.GONE);
+//            }
+//        });
+//
+//        animator.start();
+//    }
 }
