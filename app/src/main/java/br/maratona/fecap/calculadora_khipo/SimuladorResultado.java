@@ -15,6 +15,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.widget.TextViewKt;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -95,9 +99,11 @@ public class SimuladorResultado extends AppCompatActivity {
         if (isExpanded) {
             // Collapse (animate height to 0)
             contentLayout.setVisibility(View.GONE);
+
         } else {
             // Expand (animate height to full size)
             contentLayout.setVisibility(View.VISIBLE);
+
         }
     }
 
