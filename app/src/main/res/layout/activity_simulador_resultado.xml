@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="#FFFFFF"
     tools:context=".SimuladorResultado">
 
     <!-- item_accordion.xml -->
@@ -13,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -87,81 +90,29 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.10"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.16" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textVlConsult1"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
                     android:gravity="center"
                     android:text="Valor Consultor"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.29"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textOpcoes1"
-                    app:layout_constraintVertical_bias="0.16" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/textOpcoes2"
-                    app:layout_constraintTop_toBottomOf="@+id/textOpcoes2">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/borda_arredondada_text"
-                        android:clickable="false"
-                        android:hint="Valor Mensal"
-                        android:text="200,00" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/textOpcoes2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/borda_arredondada"
-                    android:gravity="center"
-                    android:text="2"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.10"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
-                <TextView
-                    android:id="@+id/textVlConsult2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="2dp"
-                    android:gravity="center"
-                    android:text="Faturação Cliente"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.29"
-                    app:layout_constraintStart_toEndOf="@+id/textOpcoes2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textOpcoes2" />
+                    app:layout_constraintStart_toEndOf="@+id/textOpcoes1"
+                    app:layout_constraintTop_toTopOf="@+id/textOpcoes1" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textOpcoes1"
@@ -173,13 +124,829 @@
                         android:background="@drawable/borda_arredondada_text"
                         android:clickable="false"
                         android:hint="Valor Mensal"
-                        android:text="200,00" />
+                        android:text="R$ 200,00" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/borda_arredondada_text"
+                        android:clickable="false"
+                        android:hint="Valor Hora"
+                        android:text="R$ 200,00" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/textOpcoes2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/borda_arredondada"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+                    app:layout_constraintTop_toBottomOf="@id/textInputLayout2" />
+
+                <TextView
+                    android:id="@+id/textVlConsult2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:text="Faturação Cliente"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/textOpcoes2"
+                    app:layout_constraintTop_toTopOf="@+id/textOpcoes2" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textOpcoes2"
+                    app:layout_constraintTop_toBottomOf="@id/textVlConsult2">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/borda_arredondada_text"
+                        android:clickable="false"
+                        android:hint="Quantidade Hora"
+                        android:text="160" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/borda_arredondada_text"
+                        android:clickable="false"
+                        android:hint="Hora"
+                        android:text="120,00" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textOpcoes2"
+                    app:layout_constraintTop_toBottomOf="@id/textInputLayout4">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/borda_arredondada_text"
+                        android:clickable="false"
+                        android:hint="Mês"
+                        android:text="R$ 19,200" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/accordionResumo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/accordionOpcoes"
+        app:layout_constraintTop_toBottomOf="@id/accordionOpcoes">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="#F5F5F5"
+            android:orientation="vertical">
+
+            <!-- Arrow icon that spins when clicked -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/arrowLayoutResumo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#55329A"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tituloResumo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="Resumo"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Hidden content that will be shown/hidden on click -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contentLayoutResumo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="false"
+                android:orientation="vertical"
+                android:paddingBottom="16dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/lblValorLiquido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Valor Líquido"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/pontosValorLiquido"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="................................................................................................................................"
+                    android:textColor="#C6C5C4"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblValorLiquido"
+                    app:layout_constraintEnd_toStartOf="@id/txtValorLiquido"
+                    app:layout_constraintStart_toEndOf="@+id/lblValorLiquido"
+                    app:layout_constraintTop_toTopOf="@+id/lblValorLiquido" />
+
+                <TextView
+                    android:id="@+id/txtValorLiquido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="R$ 15.360,00"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblValorLiquido"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblComissao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Comissão"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblValorLiquido" />
+
+                <TextView
+                    android:id="@+id/pontosComissao"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="................................................................................................................................"
+                    android:textColor="#C6C5C4"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblComissao"
+                    app:layout_constraintEnd_toStartOf="@id/txtComissao"
+                    app:layout_constraintStart_toEndOf="@+id/lblComissao"
+                    app:layout_constraintTop_toTopOf="@+id/lblComissao" />
+
+                <TextView
+                    android:id="@+id/txtComissao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="R$ -"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblComissao"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblMOP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="MOP"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblComissao" />
+
+                <TextView
+                    android:id="@+id/pontosMOP"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="................................................................................................................................"
+                    android:textColor="#C6C5C4"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblMOP"
+                    app:layout_constraintEnd_toStartOf="@id/txtMOP"
+                    app:layout_constraintStart_toEndOf="@+id/lblMOP"
+                    app:layout_constraintTop_toTopOf="@+id/lblMOP" />
+
+                <TextView
+                    android:id="@+id/txtMOP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="R$ 14.200,00"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblMOP"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblMLK"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="MLK"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblMOP" />
+
+                <TextView
+                    android:id="@+id/pontosMLK"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="................................................................................................................................"
+                    android:textColor="#C6C5C4"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblMLK"
+                    app:layout_constraintEnd_toStartOf="@id/txtMLK"
+                    app:layout_constraintStart_toEndOf="@+id/lblMLK"
+                    app:layout_constraintTop_toTopOf="@+id/lblMLK" />
+
+                <TextView
+                    android:id="@+id/txtMLK"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="R$ 5.520,00"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblMLK"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/accordionCustoAnual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/accordionResumo"
+        app:layout_constraintTop_toBottomOf="@id/accordionResumo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="#F5F5F5"
+            android:orientation="vertical">
+
+            <!-- Arrow icon that spins when clicked -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/arrowLayoutCustoAnual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#55329A"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tituloCustoAnual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="Custo Anual"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/arrowIconCustoAnual"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:src="@drawable/baseline_keyboard_arrow_down_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Hidden content that will be shown/hidden on click -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contentLayoutCustoAnual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="false"
+                android:orientation="vertical"
+                android:paddingBottom="16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/lblSalarioMensal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Salário Mensal"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/pontosSalarioMensal"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="................................................................................................................................"
+                    android:textColor="#C6C5C4"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblSalarioMensal"
+                    app:layout_constraintEnd_toStartOf="@id/txtSalarioMensal"
+                    app:layout_constraintStart_toEndOf="@+id/lblSalarioMensal"
+                    app:layout_constraintTop_toTopOf="@+id/lblSalarioMensal" />
+
+                <TextView
+                    android:id="@+id/txtSalarioMensal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="R$ 5.000,00"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblSalarioMensal"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/accordionMargem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/accordionCustoAnual"
+        app:layout_constraintTop_toBottomOf="@id/accordionCustoAnual">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="#F5F5F5"
+            android:orientation="vertical">
+
+            <!-- Arrow icon that spins when clicked -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/arrowLayoutMargem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#55329A"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tituloMargem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="Margem"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/arrowIconMargem"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:src="@drawable/baseline_keyboard_arrow_down_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Hidden content that will be shown/hidden on click -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contentLayoutMargem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="false"
+                android:orientation="vertical"
+                android:paddingBottom="16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/lblMargemMOP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:text="MOP"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/pontosMargemMOP"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="................................................................................................................................"
+                    android:textColor="#C6C5C4"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblMargemMOP"
+                    app:layout_constraintEnd_toStartOf="@id/txtMargemMOP"
+                    app:layout_constraintStart_toEndOf="@+id/lblMargemMOP"
+                    app:layout_constraintTop_toTopOf="@+id/lblMargemMOP" />
+
+                <TextView
+                    android:id="@+id/txtMargemMOP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="R$ 5.000,00 | 74,0%"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblMargemMOP"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblMargemMLK"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="MLK"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblMargemMOP" />
+
+                <TextView
+                    android:id="@+id/pontosMargemMLK"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="................................................................................................................................"
+                    android:textColor="#C6C5C4"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblMargemMLK"
+                    app:layout_constraintEnd_toStartOf="@id/txtMargemMLK"
+                    app:layout_constraintStart_toEndOf="@+id/lblMargemMLK"
+                    app:layout_constraintTop_toTopOf="@+id/lblMargemMLK" />
+
+                <TextView
+                    android:id="@+id/txtMargemMLK"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="R$ 5.520,00 | 28,8%"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblMargemMLK"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/accordionCusto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/accordionMargem"
+        app:layout_constraintTop_toBottomOf="@id/accordionMargem">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="#F5F5F5"
+            android:orientation="vertical">
+
+            <!-- Arrow icon that spins when clicked -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/arrowLayoutCusto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#55329A"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tituloCusto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="Custo"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/arrowIconCusto"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:src="@drawable/baseline_keyboard_arrow_down_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Hidden content that will be shown/hidden on click -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contentLayoutCusto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="false"
+                android:orientation="vertical"
+                android:paddingBottom="16dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/lblCustoComissao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Comissão"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/pontosCustoComissao"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="................................................................................................................................"
+                    android:textColor="#C6C5C4"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblCustoComissao"
+                    app:layout_constraintEnd_toStartOf="@id/txtCustoComissao"
+                    app:layout_constraintStart_toEndOf="@+id/lblCustoComissao"
+                    app:layout_constraintTop_toTopOf="@+id/lblCustoComissao" />
+
+                <TextView
+                    android:id="@+id/txtCustoComissao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="R$ -"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblCustoComissao"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblCustoAdministrativo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Administrativo"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblCustoComissao" />
+
+                <TextView
+                    android:id="@+id/pontosCustoAdministrativo"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="................................................................................................................................"
+                    android:textColor="#C6C5C4"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblCustoAdministrativo"
+                    app:layout_constraintEnd_toStartOf="@id/txtCustoAdministrativo"
+                    app:layout_constraintStart_toEndOf="@+id/lblCustoAdministrativo"
+                    app:layout_constraintTop_toTopOf="@+id/lblCustoAdministrativo" />
+
+                <TextView
+                    android:id="@+id/txtCustoAdministrativo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="R$ 1.920,00"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblCustoAdministrativo"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/lblCustoOperacional"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Operacional"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblCustoAdministrativo" />
+
+                <TextView
+                    android:id="@+id/pontosCustoOperacional"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="................................................................................................................................"
+                    android:textColor="#C6C5C4"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblCustoOperacional"
+                    app:layout_constraintEnd_toStartOf="@id/txtCustoOperacional"
+                    app:layout_constraintStart_toEndOf="@+id/lblCustoOperacional"
+                    app:layout_constraintTop_toTopOf="@+id/lblCustoOperacional" />
+
+                <TextView
+                    android:id="@+id/txtCustoOperacional"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="R$ 7.920,00"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblCustoOperacional"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/accordionTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/accordionCusto"
+        app:layout_constraintTop_toBottomOf="@id/accordionCusto">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="#F5F5F5"
+            android:orientation="vertical">
+
+            <!-- Arrow icon that spins when clicked -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/arrowLayoutTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#55329A"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tituloTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="Total"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/arrowIconTotal"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:src="@drawable/baseline_keyboard_arrow_down_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Hidden content that will be shown/hidden on click -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contentLayoutTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="false"
+                android:orientation="vertical"
+                android:paddingBottom="16dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/lblTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Total"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/pontosTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="................................................................................................................................"
+                    android:textColor="#C6C5C4"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblTotal"
+                    app:layout_constraintEnd_toStartOf="@id/txtTotal"
+                    app:layout_constraintStart_toEndOf="@+id/lblTotal"
+                    app:layout_constraintTop_toTopOf="@+id/lblTotal" />
+
+                <TextView
+                    android:id="@+id/txtTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="R$ 9.840,00"
+                    android:textColor="#323E46"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblTotal"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
