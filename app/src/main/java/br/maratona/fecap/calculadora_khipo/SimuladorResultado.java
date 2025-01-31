@@ -76,7 +76,7 @@ public class SimuladorResultado extends AppCompatActivity {
         txtMargemMOP.setText(formatarEmReais(auxMop * -1) + " | " + formatPercentage(auxPercMop * -1));
         txtMargemMLK.setText(formatarEmReais(auxMlk * -1) + " | " + formatPercentage(auxPercMlk * -1));
 
-        txtComissao.setText(formatarEmReais(auxComPm));
+        txtCustoComissao.setText(formatarEmReais(auxComPm));
         txtCustoAdministrativo.setText(formatarEmReais(auxCAdm));
         txtCustoOperacional.setText(formatarEmReais(auxCOp));
 
